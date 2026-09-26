@@ -119,6 +119,41 @@ If the data-folder variable isn't available, it falls back to `~/.adhd-study-coa
 
 Personal data lives in `profile.json`, **never** in the shared agent file.
 
+### Safety at a glance
+
+| | |
+|---|---|
+| Network access | ❌ None. The plugin makes no network calls. |
+| Hooks / scripts / MCP servers | ❌ None. It's a single Markdown agent file. |
+| Tools the agent may use | Read, Write, Edit, Glob, Grep, Bash, PowerShell — limited to the data folder by its own rules |
+| Files it touches | Only the data folder above |
+| Stored content treated as | Data, never instructions (guards against injected text in old notes) |
+
+Read the agent yourself — it's one file: [`agents/adhd-study-coach.md`](./agents/adhd-study-coach.md).
+
+---
+
+## 💬 What a session looks like
+
+```
+You:    quiz me
+Coach:  2 things are due: "photosynthesis: light reactions", "cell membranes".
+        Starting with the first. ~5 min.
+        A plant sits in green light only. What happens to its rate of
+        photosynthesis, and why?
+You:    it slows a lot because chlorophyll reflects green
+Coach:  Solid. ✅ Chlorophyll absorbs mostly red and blue, so green light
+        drives little of the reaction. Next one…
+        …
+        ✅ 2 solid · 🟡 1 shaky · streak on "cell membranes": 3
+        Ready for something new, or stop here?
+```
+
+## 🐛 Support
+
+Bugs and ideas: [GitHub Issues](https://github.com/itsAalaa7/adhd-study-coach/issues).
+Security concerns: see [`SECURITY.md`](./SECURITY.md).
+
 ---
 
 ## ❓ Why one agent, not four?
