@@ -1,53 +1,151 @@
-# ADHD Study Coach
+# 🧠 ADHD Study Coach
 
-A single Claude Code agent that acts as an ongoing study companion for a learner with ADHD — any subject, not just code. It handles its own setup, automatically warms you up with spaced-repetition review before teaching anything new, teaches in small evidence-scaled chunks, interviews you at the end of a session to lock in what actually stuck, and periodically checks in on your own learning patterns.
+**A Claude Code agent that helps you study anything — and keeps you doing it.**
 
-Every behavioral rule in it traces to a specific piece of learning-science or ADHD research — see [`RESEARCH.md`](./RESEARCH.md) for the full citation list and, just as importantly, an honest strength rating for each one (a lot of "ADHD study tips" out there are unproven folklore; this project tries hard not to be that).
+> **TL;DR** — Talk to it. It quizzes you on old stuff, teaches new stuff in tiny pieces, makes you explain it back, and remembers how you learn. You never have to remember to ask for review. It does it for you.
 
-## What it actually does
+---
 
-- **Remembers you don't have to remember it.** On first use it asks three short questions (subjects, cadence, how you learn) and never asks again — everything after that is inferred from how sessions actually go.
-- **Warms up automatically.** If anything is due for review, it quizzes you on it *before* teaching anything new — no separate command to remember.
-- **Teaches in small, concrete chunks**, with worked examples that fade out as a topic becomes familiar, one scenario question at a time, never a wall of material up front.
-- **Interviews you at the end**, Feynman-style ("teach it back to me"), and writes a real note + optional Anki flashcard deck from what you actually said — not a summary it wrote for you.
-- **Checks in on itself** every few sessions: what you keep stumbling on, what you keep deferring, whether you're actually using the review mechanism — and updates its understanding of how you specifically learn.
-- **Never shames a gap.** Coming back after a missed week is treated as the actual skill, not a lapse to apologize for.
-
-## Install
+## ⚡ Start in 30 seconds
 
 ```
 /plugin marketplace add itsAalaa7/adhd-study-coach
 /plugin install adhd-study-coach@adhd-study-coach-marketplace
 ```
 
-Then just start talking to it — e.g. "let's study photosynthesis" or "quiz me on what's due." First run triggers a short setup conversation automatically.
+Then say one of these:
 
-## Where your data lives
+- `let's study photosynthesis`
+- `quiz me`
+- `I'm done for today`
+- `how am I doing lately`
 
-Everything the agent learns about you — your subjects, your review schedule, your notes, your session history — is stored locally under this plugin's persistent data directory (survives plugin updates, never touches the shared agent file, never leaves your machine unless you put it somewhere yourself):
+First run asks **3 quick questions**. Never again after that.
+
+---
+
+## 🎯 The big idea (read this one)
+
+Two facts, one plan:
+
+| Fact | Source |
+|---|---|
+| **What works** for learning is already well known: test yourself, and space it out. | Strong general-population science |
+| **What's hard for ADHD brains** is *keeping on doing it*: starting, tracking time, waiting for payoff, feeling shame. | ADHD research |
+
+**So this plugin doesn't invent a new "ADHD study method."**
+It takes the proven method and **removes the ADHD-specific barriers** to doing it.
+
+---
+
+## 🔁 What happens in a session
+
+The agent picks the mode itself. You don't choose.
+
+| # | Mode | When | What it does |
+|---|---|---|---|
+| 0 | **Onboarding** | First time only | 3 questions, then straight into studying |
+| 1 | **Warm-up** | Something is due for review | Quizzes you on old topics *before* new ones |
+| 2 | **Teach** | You want something new | Small chunks, one question at a time |
+| 3 | **Reflect** | You say "I'm done" | Interviews you, saves a note (+ optional Anki cards) |
+| 4 | **Check-in** | Every ~5 sessions | Finds your patterns, tells you what to adopt / drop / do next |
+
+---
+
+## 🔬 The science, one feature at a time
+
+Every rule in the agent has a reason. Here's the short version.
+**Full citations and honest strength ratings → [`RESEARCH.md`](./RESEARCH.md).**
+
+### ✅ Strong evidence — the core
+
+| Feature | The science | What you'll notice |
+|---|---|---|
+| **Quizzes, not re-reading** | *Retrieval practice.* Testing yourself beats re-studying (Roediger & Karpicke 2006; meta-analysis of 217 studies, Adesope et al. 2017). | Warm-ups are questions, never "read your notes again." |
+| **Spaced review** | *Spacing effect.* Reviewing at growing gaps beats cramming (Cepeda et al. 2006; 317 experiments). | Topics come back at 1 → 3 → 7 → 16 → 35 → 90 days. |
+| **Tiny chunks** | *Cognitive load theory* (Sweller). Working memory is limited. ADHD adults and children show large working-memory differences (Kasper et al. 2012; Alderson et al. 2013). | 4–5 lines per idea. One question per message. |
+| **Worked examples that fade** | Full examples help while learning; too much help later backfires (*expertise-reversal effect*). | First time: fully shown. Later: you do more of it. |
+| **"It should feel hard"** | *Desirable difficulties* (Bjork & Bjork). Effortful recall sticks better than easy review. | It tells you *why* it's uncomfortable. |
+| **Stop the low-value habits** | Highlighting, re-reading and summarizing rate **low utility** (Dunlosky et al. 2013). | One-line redirect to testing yourself. No lecture. |
+
+### 🟡 Moderate evidence
+
+| Feature | The science | What you'll notice |
+|---|---|---|
+| **Teach-it-back at the end** | *Self-explanation / generation effect.* Explaining in your own words improves understanding. | Reflect mode is an interview, not a summary written for you. |
+| **Mixed topics in warm-up** | *Interleaving* (Rohrer & Taylor 2007). Real effect, smaller and less consistent than testing or spacing. | Due topics are mixed together. |
+| **Instant feedback** | *Delay aversion* (Sonuga-Barke). ADHD reward systems respond poorly to "payoff later." | Every answer is graded right away as solid / shaky / blank. Never "wrong." |
+| **Visible progress line** | One pediatric ADHD trial found gamified learning helped (2025 RCT, n=80). Applying it to adults is an *inference*. | One line after warm-up: `✅ 3 solid · 🟡 1 shaky`. |
+| **Auto-start, no "remember to ask"** | CHADD / NICE guidance: supports that need self-activation get underused. | Warm-up and check-ins run on their own. |
+| **Time shown for you** | *Time blindness* (Barkley). Sense of elapsed time is unreliable in ADHD. | Plain time checkpoints: "~10 min in." |
+
+### 🟠 Weak or anecdotal — included, clearly labeled
+
+| Feature | Honest status |
+|---|---|
+| **Tiny first step** (against "Wall of Awful") | Clinical framework, not a tested finding. Low risk, so it stays. |
+| **Never shame** | Rejection Sensitive Dysphoria has very little direct research. Not shaming a learner is good practice anyway. |
+| **Body-doubling offer** | Anecdotal only. Optional, and it never claims to be as good as the strong stuff. |
+
+> **The gap, stated plainly:** there is very little research that tests spaced repetition or AI tutoring *specifically on ADHD learners*. Most of the proven techniques come from general-population studies. The ADHD research explains *why the barriers are real*. That's an honest limit, not a hidden one.
+
+---
+
+## 🧩 Rules the agent follows
+
+- ✂️ **Small.** Max 4–5 lines per section. One core idea, bolded.
+- 🎯 **One question at a time.** Scenario-based ("you do X and Y happens — why?"), never "define X."
+- ⏱️ **Time is external.** It tells you the time so your brain doesn't have to track it.
+- 🏁 **65% is "done enough."** If the timebox ends, the rest becomes an open item. You end on a win.
+- 🧠 **Memorize vs. look up.** It says which is which, so not everything feels equally heavy.
+- 💛 **No shame.** Missed a week? Coming back *is* the skill.
+
+---
+
+## 🔒 What it reads and writes (privacy)
+
+Everything is **local**, in the plugin's data folder. Nothing is sent anywhere by this plugin.
+If the data-folder variable isn't available, it falls back to `~/.adhd-study-coach/` and tells you once.
 
 ```
-<plugin data dir>/
-├── profile.json            # your subjects, cadence, and what the agent has learned about how you learn
-├── review-schedule.json    # spaced-repetition schedule, one entry per topic
-├── sessions.log.jsonl      # one line per session, used for the periodic check-in
+<data dir>/
+├── profile.json              # subjects, cadence, what it learned about how you learn
+├── review-schedule.json      # spaced-repetition schedule, one entry per topic
+├── sessions.log.jsonl        # one line per session (used for check-ins)
 └── notes/<subject>/
-    ├── <topic>.md          # your reflection note for each topic
-    └── flashcards/<topic>.txt   # optional Anki-importable deck
+    ├── <topic>.md            # your reflection note
+    └── flashcards/<topic>.txt  # optional Anki import file
 ```
 
-## Why one agent instead of several
+Personal data lives in `profile.json`, **never** in the shared agent file.
 
-An earlier version of this idea split the work across four separate agents (a teacher, a reviewer, a spaced-repetition quizzer, and a meta-analyst) plus a flashcards skill. It worked, but it had a real failure mode: the spaced-repetition piece only ran if the learner remembered to invoke it separately — and ADHD research is fairly direct about tools that require self-initiated activation getting underused for exactly that reason (see `RESEARCH.md`, section B). Consolidating into one agent that runs its own warm-up and its own periodic check-in automatically removes that specific failure mode by design, not by asking the learner to try harder.
+---
 
-## Not a clinical tool
+## ❓ Why one agent, not four?
 
-This is a study-methodology aid, not a diagnosis, treatment, or medical device, and it isn't a substitute for clinical care. See the closing note in `RESEARCH.md`.
+An earlier version had four agents (teacher, reviewer, quizzer, analyst).
+It worked, but the review agent only ran **if you remembered to call it** — and that's exactly the thing ADHD makes hard.
+One agent that runs its own warm-up removes that failure by design, not by asking you to try harder.
 
-## Contributing
+---
 
-Corrections to the citations in `RESEARCH.md`, reports of the agent drifting from its own rules, and subject-agnosticism bug reports (places it accidentally assumes a coding context) are all welcome — open an issue or a PR.
+## ⚠️ Not a clinical tool
 
-## License
+This is a **study aid**. It's not a diagnosis, treatment, or medical device, and it doesn't replace clinical care. If you want treatment, talk to a clinician.
+
+## 📚 About the citations
+
+`RESEARCH.md` was compiled with AI-assisted literature search. The citations are believed accurate but **have not been verified against the original papers**. Please check before citing them academically or clinically, and open an issue or PR if you spot an error.
+
+## 🤝 Contributing
+
+Welcome:
+- Citation corrections
+- Places where the agent breaks its own rules
+- Places it wrongly assumes a coding context (it should work for any subject)
+
+Open an issue or PR.
+
+## 📄 License
 
 MIT — see [`LICENSE`](./LICENSE).
