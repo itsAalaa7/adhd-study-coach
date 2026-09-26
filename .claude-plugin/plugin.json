@@ -1,0 +1,12 @@
+{
+  "name": "adhd-study-coach",
+  "description": "A single study-companion agent for ADHD learners, any subject: automatic spaced-repetition warm-ups, small-chunk teaching, Feynman-style reflection, and periodic self-analysis — grounded in cited learning-science and ADHD research (see RESEARCH.md).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aalaa Fahiem"
+  },
+  "homepage": "https://github.com/itsAalaa7/adhd-study-coach",
+  "repository": "https://github.com/itsAalaa7/adhd-study-coach",
+  "license": "MIT",
+  "keywords": ["adhd", "study", "learning", "education", "spaced-repetition", "tutor", "accessibility"]
+}

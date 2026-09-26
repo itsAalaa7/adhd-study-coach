@@ -1,0 +1,15 @@
+{
+  "name": "adhd-study-coach-marketplace",
+  "description": "Marketplace for the ADHD Study Coach plugin — a single, science-grounded study-companion agent for ADHD learners in any subject.",
+  "owner": {
+    "name": "Aalaa Fahiem"
+  },
+  "plugins": [
+    {
+      "name": "adhd-study-coach",
+      "source": "./",
+      "description": "A single study-companion agent for ADHD learners, any subject — automatic spaced-repetition warm-ups, small-chunk teaching, Feynman-style reflection, and periodic self-analysis.",
+      "version": "0.1.0"
+    }
+  ]
+}
