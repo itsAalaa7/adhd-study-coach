@@ -24,6 +24,20 @@ First run asks **3 quick questions**. Never again after that.
 
 ---
 
+## 💬 Use it in claude.ai chat (no Claude Code needed)
+
+There's a **Skill version** for the normal Claude chat window (claude.ai and Claude Desktop).
+
+1. Download [`adhd-study-coach-skill.zip`](https://github.com/itsAalaa7/adhd-study-coach/raw/main/claude-ai-skill/adhd-study-coach-skill.zip)
+2. In Claude: **Settings → Capabilities → Skills → Upload skill** (skills need to be enabled on your plan)
+3. Start a chat: `let's study photosynthesis`
+
+**How memory works in chat:** chats don't keep files, so the coach prints a small **Progress Card** (a JSON block) at the end of each session. Save it, and paste it at the start of next time. That's how it knows what's due for review.
+
+The Claude Code plugin below is still the smoother option (it saves your progress automatically). Source: [`claude-ai-skill/`](./claude-ai-skill/adhd-study-coach/SKILL.md).
+
+---
+
 ## 🎯 The big idea (read this one)
 
 Two facts, one plan:
