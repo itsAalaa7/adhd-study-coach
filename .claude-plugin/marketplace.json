@@ -9,7 +9,7 @@
       "name": "adhd-study-coach",
       "source": "./",
       "description": "A single study-companion agent for ADHD learners, any subject — automatic spaced-repetition warm-ups, small-chunk teaching, Feynman-style reflection, and periodic self-analysis.",
-      "version": "0.1.1"
+      "version": "0.2.0"
     }
   ]
 }
