@@ -25,7 +25,7 @@ Chats forget. So at the end of each session the coach gives you a small block of
 
 That's how it knows what to quiz you on.
 
-> Want it set up permanently? See [setup for each app](./universal/README.md) (ChatGPT, Gemini, Claude).
+> Want it set up permanently? See [setup for each app](./universal/README.md): ChatGPT, Gemini, Claude, OpenCode, Command Code, OpenRouter.
 
 ---
 
