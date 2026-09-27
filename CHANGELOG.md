@@ -15,3 +15,6 @@
 - Add claude.ai Skill version (`claude-ai-skill/`) with a copy-paste Progress Card for memory.
 - Add provider-neutral prompts (`universal/`) for ChatGPT, Gemini, Copilot, other chat AIs and API system prompts.
 - Add OpenCode and Command Code agent files (`integrations/`) and OpenRouter preset instructions.
+- Website (GitHub Pages) with a Copy button, pictured steps and a fallback.
+- Progress Card is now plain text instead of JSON; coach greets first-time users and tells them what to type.
+- Maintainer guide for publishing one-click Custom GPT / Gem links.

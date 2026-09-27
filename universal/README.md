@@ -27,7 +27,7 @@ Then say: `new`, then `let's study <anything>`.
 
 ## Memory: the Progress Card
 
-Chats don't reliably remember between conversations, so the coach prints a small **Progress Card** (JSON) after each session. **Save it** (a note, a file, anywhere) and **paste it at the start of next time**. That's how it knows what's due for review.
+Chats don't reliably remember between conversations, so the coach prints a short plain-text **Progress Card** after each session. **Save it** (a note, a file, anywhere) and **paste it at the start of next time**. That's how it knows what's due for review.
 
 Don't rely on a platform's built-in "memory" feature for this. The card is the source of truth.
 
@@ -35,7 +35,7 @@ Don't rely on a platform's built-in "memory" feature for this. The card is the s
 
 - Only the **Claude Code plugin** saves progress automatically. Everywhere else you carry the card yourself.
 - Model quality matters: the coach depends on a model that follows a long prompt and asks **one question at a time**. If a weaker model rushes ahead, remind it: *"one question at a time, wait for my answer."*
-- Weaker models may not follow the card format perfectly. If the card looks wrong, ask it to re-print the card in valid JSON.
+- Weaker models may not follow the card format perfectly. If the card looks wrong, ask it to re-print the card in the same layout as before.
 - Not tested on every provider. Reports welcome via [Issues](https://github.com/itsAalaa7/adhd-study-coach/issues).
 
 ---
@@ -76,3 +76,5 @@ OpenRouter is a gateway to many models, so you paste the **prompt** (not the age
 ## Not tested everywhere
 
 These file formats and menu names come from each tool's docs and may change. If a step fails, open an [Issue](https://github.com/itsAalaa7/adhd-study-coach/issues).
+
+Maintainers: [how to publish one-click ChatGPT / Gemini links](./SHARE-LINKS.md).

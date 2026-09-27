@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADHD Study Coach</title>
+<meta name="description" content="A free AI study coach for people with ADHD. Copy it into ChatGPT, Gemini, Claude or any AI chat in 3 steps.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232F9E6E'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#f6f5f0; --card:#ffffff; --ink:#1d2b26; --muted:#5b6b64; --line:#e3e0d6;
+    --brand:#2F9E6E; --brand-ink:#ffffff; --soft:#e6f4ed; --warn:#fff4d6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141a17; --card:#1c2521; --ink:#eaf1ed; --muted:#9fb1a8; --line:#2c3a34;
+      --brand:#3fb884; --brand-ink:#08130e; --soft:#1f3329; --warn:#3a3218;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:18px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px 64px}
+  header{padding:40px 0 8px;text-align:center}
+  h1{font-size:clamp(2rem,6vw,2.8rem);line-height:1.15;margin:0 0 10px}
+  .lead{font-size:1.15rem;color:var(--muted);margin:0 auto;max-width:34em}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0}
+  .step{display:flex;gap:16px;align-items:flex-start}
+  .num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--brand);color:var(--brand-ink);
+    display:grid;place-items:center;font-weight:700;font-size:1.1rem}
+  .step h2{margin:2px 0 6px;font-size:1.3rem}
+  .step p{margin:0 0 12px}
+  .grow{flex:1;min-width:0}
+  button,.btn{font:inherit;font-weight:650;border:0;border-radius:14px;padding:14px 22px;cursor:pointer;
+    background:var(--brand);color:var(--brand-ink);text-decoration:none;display:inline-block;min-height:48px}
+  button:hover,.btn:hover{filter:brightness(1.06)}
+  button:focus-visible,.btn:focus-visible,a:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .big{font-size:1.2rem;padding:16px 28px;width:100%}
+  .ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+  .row{display:flex;flex-wrap:wrap;gap:10px}
+  .row .btn{flex:1 1 150px;text-align:center}
+  .status{min-height:1.6em;margin:8px 0 0;font-weight:600;color:var(--brand)}
+  .mock{width:100%;height:auto;margin-top:12px;border-radius:12px}
+  .note{background:var(--warn);border-radius:12px;padding:12px 14px;font-size:.98rem}
+  pre{margin:10px 0 0;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px;
+    overflow-x:auto;font-size:.82rem;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+  textarea{width:100%;height:150px;border-radius:12px;border:1px solid var(--line);padding:10px;
+    background:var(--card);color:var(--ink);font:13px/1.4 ui-monospace,Consolas,monospace}
+  .hidden{display:none}
+  details{margin-top:8px}
+  summary{cursor:pointer;font-weight:600}
+  footer{margin-top:28px;text-align:center;color:var(--muted);font-size:.95rem}
+  footer a{color:inherit}
+  h3{margin:0 0 6px;font-size:1.15rem}
+  ul{margin:6px 0 0;padding-left:1.2em}
+  @media (max-width:480px){.card{padding:18px}.step{gap:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🧠 ADHD Study Coach</h1>
+  <p class="lead">A free AI study coach for people with ADHD. Any subject. Works in ChatGPT, Gemini, Claude and more.</p>
+</header>
+
+<!-- One-click links. Filled in from ONE_CLICK below once you publish a Custom GPT / Gem. -->
+<section id="oneclick" class="card hidden">
+  <h3>⚡ One click, nothing to copy</h3>
+  <div class="row" id="oneclick-btns"></div>
+</section>
+
+<section class="card step">
+  <div class="num">1</div>
+  <div class="grow">
+    <h2>Copy the coach</h2>
+    <p>Press the button. That's it.</p>
+    <button id="copy" class="big" type="button">📋 Copy the coach</button>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <div id="fallback" class="hidden">
+      <p class="note">Your browser blocked automatic copying. Click in the box below, then press <b>Ctrl+A</b>, then <b>Ctrl+C</b> (Mac: <b>Cmd+A</b>, <b>Cmd+C</b>).</p>
+      <textarea id="fbtext" readonly aria-label="Coach text to copy"></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="card step">
+  <div class="num">2</div>
+  <div class="grow">
+    <h2>Open your AI and paste</h2>
+    <p>Open a <b>new chat</b>, click the message box, paste (<b>Ctrl+V</b>, or <b>Cmd+V</b> on Mac), and press send.</p>
+    <div class="row">
+      <a class="btn ghost" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+      <a class="btn ghost" href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
+      <a class="btn ghost" href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
+      <a class="btn ghost" href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Copilot</a>
+    </div>
+    <svg class="mock" viewBox="0 0 520 150" role="img" aria-label="Illustration: a chat window with the pasted coach text in the message box and a send button">
+      <rect x="1" y="1" width="518" height="148" rx="14" fill="var(--soft)" stroke="var(--line)"/>
+      <rect x="16" y="16" width="230" height="30" rx="15" fill="var(--card)" stroke="var(--line)"/>
+      <text x="32" y="36" font-size="13" fill="var(--muted)" font-family="system-ui">Hi! I'm your study coach…</text>
+      <rect x="16" y="92" width="400" height="42" rx="21" fill="var(--card)" stroke="var(--brand)" stroke-width="2"/>
+      <text x="34" y="118" font-size="13" fill="var(--ink)" font-family="system-ui">You are the ADHD Study Coach… (pasted)</text>
+      <circle cx="458" cy="113" r="22" fill="var(--brand)"/>
+      <path d="M449 113h18m-7-8 8 8-8 8" stroke="var(--brand-ink)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<section class="card step">
+  <div class="num">3</div>
+  <div class="grow">
+    <h2>Type <code>new</code></h2>
+    <p>Then say what you want to learn, like <b>“let's study photosynthesis”</b>. It asks 3 quick questions the first time, then you're studying.</p>
+    <svg class="mock" viewBox="0 0 520 120" role="img" aria-label="Illustration: you type new, the coach replies and asks what you want to learn">
+      <rect x="1" y="1" width="518" height="118" rx="14" fill="var(--soft)" stroke="var(--line)"/>
+      <rect x="330" y="14" width="170" height="30" rx="15" fill="var(--brand)"/>
+      <text x="415" y="34" font-size="14" text-anchor="middle" fill="var(--brand-ink)" font-family="system-ui" font-weight="700">new</text>
+      <rect x="16" y="58" width="360" height="44" rx="14" fill="var(--card)" stroke="var(--line)"/>
+      <text x="30" y="85" font-size="13" fill="var(--ink)" font-family="system-ui">Great! What do you want to learn?</text>
+    </svg>
+  </div>
+</section>
+
+<section class="card">
+  <h3>💾 Coming back tomorrow</h3>
+  <p>Chats forget. So at the end of each session the coach gives you a small text block called a <b>Progress Card</b>.</p>
+  <ul>
+    <li><b>Save it</b> anywhere: Notes app, a document, an email to yourself.</li>
+    <li><b>Paste it</b> at the start of your next chat, right after the coach.</li>
+  </ul>
+  <p>That's how it knows what to quiz you on. It looks like this:</p>
+<pre>=== ADHD STUDY COACH PROGRESS CARD ===
+Sessions so far: 3
+Subjects: Biology
+Biology | Photosynthesis | due: 2026-09-28 | streak: 1 …
+=== END OF CARD ===</pre>
+</section>
+
+<section class="card">
+  <h3>🌱 What it does</h3>
+  <ul>
+    <li>Quizzes you on old topics <b>before</b> teaching new ones, so things stick.</li>
+    <li>Teaches in tiny pieces, one question at a time.</li>
+    <li>Asks you to explain it back in your own words.</li>
+    <li>Never shames you. Missed a week? Just come back.</li>
+  </ul>
+  <details>
+    <summary>Is this scientific?</summary>
+    <p>The methods (testing yourself, spacing, small chunks) are backed by strong research. ADHD research explains why they're hard to keep doing, and the coach removes those barriers. Some extras are labeled as low-evidence. <a href="https://github.com/itsAalaa7/adhd-study-coach/blob/main/RESEARCH.md">Read the sources and honest ratings</a>.</p>
+  </details>
+  <details>
+    <summary>I use Claude Code, OpenCode, Command Code or OpenRouter</summary>
+    <p>You can install it as a plugin or agent that saves progress automatically. <a href="https://github.com/itsAalaa7/adhd-study-coach#readme">See the setup guide</a>.</p>
+  </details>
+</section>
+
+<footer>
+  <p>Free and open source (MIT). <a href="https://github.com/itsAalaa7/adhd-study-coach">GitHub</a> · <a href="https://github.com/itsAalaa7/adhd-study-coach/issues">Report a problem</a></p>
+  <p>A study aid, not a medical tool. It doesn't replace professional care.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  // Fill these in after publishing a Custom GPT / Gem. Empty url = hidden.
+  var ONE_CLICK = [
+    {label: "Open in ChatGPT", url: ""},
+    {label: "Open in Gemini",  url: ""}
+  ];
+  var SRC = "https://raw.githubusercontent.com/itsAalaa7/adhd-study-coach/main/universal/adhd-study-coach-compact.md";
+
+  var links = ONE_CLICK.filter(function(l){return l.url;});
+  if (links.length){
+    var box = document.getElementById("oneclick-btns");
+    links.forEach(function(l){
+      var a = document.createElement("a");
+      a.className = "btn"; a.href = l.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = l.label;
+      box.appendChild(a);
+    });
+    document.getElementById("oneclick").classList.remove("hidden");
+  }
+
+  var btn = document.getElementById("copy"), status = document.getElementById("status");
+  var fb = document.getElementById("fallback"), fbtext = document.getElementById("fbtext");
+  var cached = null;
+
+  function showFallback(text){
+    fbtext.value = text || ("Couldn't load the text. Open " + SRC + " and copy it from there.");
+    fb.classList.remove("hidden");
+    fbtext.focus(); fbtext.select();
+  }
+
+  btn.addEventListener("click", function(){
+    status.textContent = "Getting it…";
+    var get = cached ? Promise.resolve(cached) :
+      fetch(SRC).then(function(r){ if(!r.ok) throw new Error("load"); return r.text(); });
+    get.then(function(text){
+      cached = text;
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        return navigator.clipboard.writeText(text).then(function(){
+          status.textContent = "✅ Copied! Now go to step 2.";
+          btn.textContent = "✅ Copied";
+          setTimeout(function(){ btn.textContent = "📋 Copy the coach"; }, 3000);
+        });
+      }
+      throw new Error("noclip");
+    }).catch(function(){
+      status.textContent = "";
+      showFallback(cached);
+    });
+  });
+})();
+</script>
+</body>
+</html>

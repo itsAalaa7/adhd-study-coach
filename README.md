@@ -8,7 +8,7 @@
 
 ## ⚡ Start here (no tech skills needed)
 
-**1. Copy the coach.** Open [**this page**](https://raw.githubusercontent.com/itsAalaa7/adhd-study-coach/main/universal/adhd-study-coach-compact.md), press `Ctrl+A` then `Ctrl+C` (on Mac: `Cmd+A`, `Cmd+C`).
+**1. Copy the coach.** Go to the [**website**](https://itsaalaa7.github.io/adhd-study-coach/) and press the big **Copy** button. (No button? Open [this page](https://raw.githubusercontent.com/itsAalaa7/adhd-study-coach/main/universal/adhd-study-coach-compact.md), press `Ctrl+A` then `Ctrl+C`; Mac: `Cmd+A`, `Cmd+C`.)
 
 **2. Paste it into a new chat** in the AI you already use (ChatGPT, Gemini, Claude, Copilot, anything) and press send.
 
