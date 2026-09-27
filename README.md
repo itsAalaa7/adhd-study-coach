@@ -1,48 +1,46 @@
 # 🧠 ADHD Study Coach
 
-**A Claude Code agent that helps you study anything — and keeps you doing it.**
+**An AI study coach for people with ADHD. Works for any subject, in ChatGPT, Gemini, Claude and more.**
 
-> **TL;DR** — Talk to it. It quizzes you on old stuff, teaches new stuff in tiny pieces, makes you explain it back, and remembers how you learn. You never have to remember to ask for review. It does it for you.
+> It quizzes you on old stuff, teaches new stuff in tiny pieces, and makes you explain it back. You never have to remember to ask for review.
 
 ---
 
-## ⚡ Start in 30 seconds
+## ⚡ Start here (no tech skills needed)
+
+**1. Copy the coach.** Open [**this page**](https://raw.githubusercontent.com/itsAalaa7/adhd-study-coach/main/universal/adhd-study-coach-compact.md), press `Ctrl+A` then `Ctrl+C` (on Mac: `Cmd+A`, `Cmd+C`).
+
+**2. Paste it into a new chat** in the AI you already use (ChatGPT, Gemini, Claude, Copilot, anything) and press send.
+
+**3. Type `new`,** then tell it what you want to learn. Example: `let's study photosynthesis`.
+
+That's it. It asks 3 quick questions the first time, then you're studying.
+
+### 💾 Coming back the next day
+
+Chats forget. So at the end of each session the coach gives you a small block of text called a **Progress Card**.
+
+- **Save it** anywhere (Notes app, a document, email to yourself).
+- **Paste it** at the start of your next chat, after the coach.
+
+That's how it knows what to quiz you on.
+
+> Want it set up permanently? See [setup for each app](./universal/README.md) (ChatGPT, Gemini, Claude).
+
+---
+
+## 🛠️ For Claude Code users
+
+Progress saves **automatically**, so no Progress Card is needed.
 
 ```
 /plugin marketplace add itsAalaa7/adhd-study-coach
 /plugin install adhd-study-coach@adhd-study-coach-marketplace
 ```
 
-Then say one of these:
+Then say `let's study X`, `quiz me`, `I'm done for today`, or `how am I doing lately`.
 
-- `let's study photosynthesis`
-- `quiz me`
-- `I'm done for today`
-- `how am I doing lately`
-
-First run asks **3 quick questions**. Never again after that.
-
----
-
-## 💬 Use it in claude.ai chat (no Claude Code needed)
-
-There's a **Skill version** for the normal Claude chat window (claude.ai and Claude Desktop).
-
-1. Download [`adhd-study-coach-skill.zip`](https://github.com/itsAalaa7/adhd-study-coach/raw/main/claude-ai-skill/adhd-study-coach-skill.zip)
-2. In Claude: **Settings → Capabilities → Skills → Upload skill** (skills need to be enabled on your plan)
-3. Start a chat: `let's study photosynthesis`
-
-**How memory works in chat:** chats don't keep files, so the coach prints a small **Progress Card** (a JSON block) at the end of each session. Save it, and paste it at the start of next time. That's how it knows what's due for review.
-
-The Claude Code plugin below is still the smoother option (it saves your progress automatically). Source: [`claude-ai-skill/`](./claude-ai-skill/adhd-study-coach/SKILL.md).
-
----
-
-## 🌐 Use it with any AI (ChatGPT, Gemini, Copilot, and more)
-
-The coach is a plain **system prompt**, so it works anywhere you can set custom instructions or paste a first message: ChatGPT (Custom GPT / Project), Gemini (Gem), Copilot, Mistral, Perplexity, local models, or an API system prompt.
-
-👉 **[`universal/`](./universal/README.md)** has the ready-to-paste prompts and per-provider setup. Progress is kept in a copy-paste **Progress Card**, same as the claude.ai version.
+**Claude app (claude.ai / Desktop) skill:** download [`adhd-study-coach-skill.zip`](https://github.com/itsAalaa7/adhd-study-coach/raw/main/claude-ai-skill/adhd-study-coach-skill.zip), then Settings → Capabilities → Skills → Upload skill.
 
 ---
 
