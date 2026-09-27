@@ -38,6 +38,14 @@ The Claude Code plugin below is still the smoother option (it saves your progres
 
 ---
 
+## 🌐 Use it with any AI (ChatGPT, Gemini, Copilot, and more)
+
+The coach is a plain **system prompt**, so it works anywhere you can set custom instructions or paste a first message: ChatGPT (Custom GPT / Project), Gemini (Gem), Copilot, Mistral, Perplexity, local models, or an API system prompt.
+
+👉 **[`universal/`](./universal/README.md)** has the ready-to-paste prompts and per-provider setup. Progress is kept in a copy-paste **Progress Card**, same as the claude.ai version.
+
+---
+
 ## 🎯 The big idea (read this one)
 
 Two facts, one plan:

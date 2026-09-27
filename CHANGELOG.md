@@ -10,3 +10,4 @@
 - README: safety table, example session, support links. Add SECURITY.md.
 - Add plugin icon (`.claude-plugin/icon.svg`, 256x256).
 - Add claude.ai Skill version (`claude-ai-skill/`) with a copy-paste Progress Card for memory.
+- Add provider-neutral prompts (`universal/`) for ChatGPT, Gemini, Copilot, other chat AIs and API system prompts.
