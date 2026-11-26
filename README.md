@@ -4,6 +4,8 @@
 
 > It quizzes you on old stuff, teaches new stuff in tiny pieces, and makes you explain it back. You never have to remember to ask for review.
 
+[![Deploy on MindPal](https://mindpal.space/badges/deploy-on-mindpal.svg)](https://mindpal.space/skills/adhd-study-coach?utm_source=github&utm_medium=readme_button)
+
 ---
 
 ## ⚡ Start here (no tech skills needed)
